@@ -56,13 +56,13 @@ def main():
     filtered=Data_1[Data_1["AREA"]=="T Nagar"]
     AREA = 5
 
-  INT_SQFT = st.slider("How many Square Feet do you want",int(Data_1.INT_SQFT.min()),int(Data_1.INT_SQFT.max()))
+  INT_SQFT = st.slider("How many Square Feet do you want",int(Data.INT_SQFT.min()),int(Data.INT_SQFT.max()))
 
-  N_BEDROOM = st.slider("How many Bedrooms you want",int(Data_1.N_BEDROOM.min()),int(Data_1.N_BEDROOM.max()))
+  N_BEDROOM = st.slider("How many Bedrooms you want",int(Data.N_BEDROOM.min()),int(Data.N_BEDROOM.max()))
 
-  N_BATHROOM = st.slider("How many Bathrooms you want",int(Data_1.N_BATHROOM.min()),int(Data_1.N_BATHROOM.max()))
+  N_BATHROOM = st.slider("How many Bathrooms you want",int(Data.N_BATHROOM.min()),int(Data.N_BATHROOM.max()))
 
-  N_ROOM = st.slider("How many Rooms you want",int(Data_1.N_ROOM.min()),int(Data_1.N_ROOM.max()))
+  N_ROOM = st.slider("How many Rooms you want",int(Data.N_ROOM.min()),int(Data.N_ROOM.max()))
 
   PARK_FACIL = st.radio("Do you want parking Facilty ?",Data.PARK_FACIL.unique())
   if PARK_FACIL == 'Yes':
@@ -102,7 +102,7 @@ def main():
   elif MZZONE == 'RM':
       MZZONE = 5
 
-  AGE_OF_HOUSE = st.slider("What should be the age of your house ?" ,int(Data_1.AGE_OF_HOUSE.min()),int(Data_1.AGE_OF_HOUSE.max()))
+  AGE_OF_HOUSE = st.slider("What should be the age of your house ?" ,int(Data.AGE_OF_HOUSE.min()),int(Data.AGE_OF_HOUSE.max()))
 
 
   input = pd.DataFrame([[AREA,INT_SQFT,N_BEDROOM,N_BATHROOM,N_ROOM,PARK_FACIL,BUILDTYPE,STREET,MZZONE,AGE_OF_HOUSE]],columns=['AREA','INT_SQFT','N_BEDROOM','N_BATHROOM','N_ROOM','PARK_FACIL','BUILDTYPE','STREET','MZZONE','AGE_OF_HOUSE'],index=['index'])
@@ -113,7 +113,7 @@ def main():
   high_1=int(i+(0.0159*i))
   high_1 = format_currency(high_1, 'INR', locale='en_IN')
 
-  j=model_1.predict(input)
+  j=model_2.predict(input)
   low_2=int(i-(0.0166*i))
   low_2 = format_currency(low_2, 'INR', locale='en_IN')
   high_2=int(i+(0.0166*i))
