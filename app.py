@@ -7,6 +7,7 @@ import streamlit.components.v1 as components
 from babel.numbers import format_currency
 import gunicorn
 from sklearn.model_selection import train_test_split
+!unzip /content/model.zip
 
 def main():
   st.set_page_config(page_title="House-Price-Predictor",page_icon="house.jpg",layout="centered",initial_sidebar_state="auto",menu_items=None)
@@ -21,8 +22,8 @@ def main():
   # Data
   Data_1 = pd.read_csv("Final_Data.csv")
   Data_2 = pd.read_csv("Final_Data_2.csv")
-  model_1=pickle.load(open("rfr.pkl","rb"))
-  model_2=pickle.load(open("rfr_2.pkl","rb"))
+  model_1=pickle.load(open("model_pkl_1","rb"))
+  model_2=pickle.load(open("model_pkl_2","rb"))
 
   st.markdown("<ht styl='text-align:center; color: Black;'>Chennai House SalesPrice and Overall Price</hr>",unsafe_allow_html=True)
 
