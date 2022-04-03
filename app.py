@@ -1,6 +1,5 @@
-#Libraries
+# Import Libraries
 import pandas as pd
-import streamlit as st
 import numpy as np
 import pickle
 import streamlit as st
@@ -9,140 +8,133 @@ from babel.numbers import format_currency
 import gunicorn
 from sklearn.model_selection import train_test_split
 
-
-
 def main():
-    st.set_page_config(page_title='House-Price-Finder', page_icon='resources/favicon.png', layout="centered", initial_sidebar_state="auto", menu_items=None)
+  st.set_page_config(page_title="House-Price-Predictor",page_icon="house.jpg",layout="centered",initial_sidebar_state="auto",menu_items=None)
 
-    html_string = '''
-    <script language="javascript">
-    alert("நன்றி! / Thank You  / धन्यवाद - Project by Immanuel");
-    </script>
-    '''
+  html_string='''
+  <script language="javascript">
+  alert("Thank You for visiting my project-Vignesh S")
+  </script>
+  '''
+  components.html(html_string)
 
-    components.html(html_string)
-    rating_string = '''
-    <script type="text/javascript">function zforms_open_window(url, height, width){var leftPos = 0;var topPos = 0;if(screen){leftPos = (screen.width - width) / 2;topPos = (screen.height - height) / 2;window.open(url, null, 'width='+width+',height='+height+',left='+leftPos+',top='+topPos+', toolbar=0, location=0, status=1, scrollbars=1, resizable=1');}}</script><a href='https://forms.zohopublic.com/arulshirts/form/ProductReview/formperma/cPBQI8W_IAzwgeHo2oSeohvGYuSnYX2v1253WjxRX6o' title="Review" target='_blank' onclick="zforms_open_window(this.href, 648, 700); return false"> 👋Ratings Here </a>>
-    '''
+  # Data
+  Data_1 = pd.read_csv("Final_Data.csv")
+  Data_2 = pd.read_csv("Final_Data_2.csv")
+  model_1=pickle.load(open("rfr.pkl","rb"))
+  model_2=pickle.load(open("rfr_2.pkl","rb"))
 
-    
+  st.markdown("<ht styl='text-align:center; color: Black;'>Chennai House SalesPrice and Overall Price</hr>",unsafe_allow_html=True)
 
-    
-    
+  #Finding House sales price and overall price
+  AREA=st.selectbox("Select your city",Data_1.AREA.unique())
+  if AREA == "Karapakkam":
+    filtered=Data_1[Data_1["AREA"]=="Karapakkam"]
+    AREA = 4
+  elif AREA == "Anna Nagar":
+    filtered=Data_1[Data_1["AREA"]=="Anna Nagar"]
+    AREA = 1
+  elif AREA == "Adyar":
+    filtered=Data_1[Data_1["AREA"]=="Adyar"]
+    AREA = 0
+  elif AREA == "Velachery":
+    filtered=Data_1[Data_1["AREA"]=="Velachery"]
+    AREA = 6
+  elif AREA == "Chrompet":
+    filtered=Data_1[Data_1["AREA"]=="Chrompet"]
+    AREA = 2
+  elif AREA == "KK Nagar":
+    filtered=Data_1[Data_1["AREA"]=="KK Nagar"]
+    AREA = 3
+  elif AREA == "T Nagar":
+    filtered=Data_1[Data_1["AREA"]=="T Nagar"]
+    AREA = 5
 
+  INT_SQFT = st.slider("Ho many SQFT you want",int(Data_1.INT_SQFT.min()),int(Data_1.INT_SQFT.max()))
 
+  N_BEDROOM = st.slider("How many Bedrooms you want",int(Data_1.N_BEDROOM.min()),int(Data_1.N_BEDROOM.max()))
 
-    #Dataset
-    data = pd.read_csv("cleaned.csv")
-    model = pickle.load(open('model_pkl','rb'))
+  N_BATHROOM = st.slider("How many Bathrooms you want",int(Data_1.N_BATHROOM.min()),int(Data_1.N_BATHROOM.max()))
 
+  N_ROOM = st.slider("How many Rooms you want",int(Data_1.N_ROOM.min()),int(Data_1.N_ROOM.max()))
 
-    st.markdown("<h1 style='text-align: center; color: grey;'>Chennai House Price</h1>", unsafe_allow_html=True)
+  PARK_FACIL = st.radio("Do you want parking Facilty ?",Data_1.PARK_FACIL.unique())
+  if PARK_FACIL == 'Yes':
+      PARK_FACIL = 1
+  else:
+      PARK_FACIL = 0
 
+  BUILDTYPE = st.radio("What kind of purpose you need  ?",Data_1.BUILDTYPE.unique())
 
+  if BUILDTYPE == 'House':
+      BUILDTYPE = 2
+  elif BUILDTYPE == 'Others':
+      BUILDTYPE = 1
+  elif BUILDTYPE == 'Commerical':
+      BUILDTYPE = 0
 
+  STREET = st.radio("What kind of purpose you need  ?",Data_1.STREET.unique())
 
+  if STREET == 'Paved':
+      STREET = 0
+  elif STREET == 'Gravel':
+      STREET = 1
+  elif STREET == 'Others':
+      STREET = 2
 
-    #st.title("Finding House Price")
+  MZZONE = st.selectbox("Which Zone you prefer ?",Data_1.MZZONE.unique())
+  if MZZONE == 'A':
+      MZZONE = 0
+  elif MZZONE == 'RH':
+      MZZONE = 1
+  elif MZZONE == 'RL':
+      MZZONE = 2
+  elif MZZONE == 'I':
+      MZZONE = 3
+  elif MZZONE == 'C':
+      MZZONE = 4
+  elif MZZONE == 'RM':
+      MZZONE = 5
 
-
-    AREA = st.selectbox("Select your city ",data.AREA.unique())
-    if AREA == 'Chrompet':
-        filtered=data[data['AREA']=='Chrompet']
-        AREA = 2
-    elif AREA == 'Karapakkam':
-        filtered=data[data['AREA']=='Karapakkam']
-        AREA  = 4
-    elif AREA == 'KK Nagar':
-        filtered=data[data['AREA']=='KK Nagar']
-        AREA = 3
-    elif AREA == 'Anna Nagar':
-        filtered=data[data['AREA']=='Anna Nagar']
-        AREA = 1
-    elif AREA == 'Adyar':
-        filtered=data[data['AREA']=='Adyar']
-        AREA = 0
-    elif AREA == 'T Nagar':
-        filtered=data[data['AREA']=='T Nagar']
-        AREA = 5
-    elif AREA == 'Velachery':
-        filtered=data[data['AREA']=='Velachery']
-        AREA = 6
-
-
-
-
-
-    INT_SQFT = st.slider("How many SQFT you want",int(data.INT_SQFT.min()),int(data.INT_SQFT.max()))
-
-    N_BEDROOM = st.slider("How many Bedrooms you want",int(data.N_BEDROOM.min()),int(data.N_BEDROOM.max()))
-
-    PARK_FACIL = st.radio("Do you want parking Facilty ?",data.PARK_FACIL.unique())
-    if PARK_FACIL == 'Yes':
-        PARK_FACIL = 1
-    else:
-        PARK_FACIL = 0
-
-
-    #Coverting MZZONe categorical to numerical
-    MZZONE = st.selectbox("Which Zone you prefer ?",filtered.MZZONE.unique())
-    if MZZONE == 'A':
-        MZZONE = 0
-    elif MZZONE == 'RH':
-        MZZONE = 3
-    elif MZZONE == 'RL':
-        MZZONE = 4
-    elif MZZONE == 'I':
-        MZZONE = 2
-    elif MZZONE == 'C':
-        MZZONE = 1
-    else:
-        MZZONE = 5
-
-    BUILDTYPE = st.radio("What kind of purpose you need  ?",data.BUILDTYPE.unique())
-
-    if BUILDTYPE == 'House':
-        BUILDTYPE = 1
-    elif BUILDTYPE == 'Others':
-        BUILDTYPE = 2
-    else:
-        BUILDTYPE = 0
+  AGE_OF_HOUSE = st.slider("How many Rooms you want",int(Data_1.AGE_OF_HOUSE.min()),int(Data_1.AGE_OF_HOUSE.max()))
 
 
+  input = pd.DataFrame([[AREA,INT_SQFT,N_BEDROOM,N_BATHROOM,N_ROOM,PARK_FACIL,BUILDTYPE,STREET,MZZONE,AGE_OF_HOUSE]],columns=['AREA','INT_SQFT','N_BEDROOM','N_BATHROOM','N_ROOM','PARK_FACIL','BUILDTYPE','STREET','MZZONE','AGE_OF_HOUSE'],index=['index'])
 
+  i=model_1.predict(input)
+  low_1=int(i-(0.0159*i))
+  low_1 = format_currency(low_1, 'INR', locale='en_IN')
+  high_1=int(i+(0.0159*i))
+  high_1 = format_currency(high_1, 'INR', locale='en_IN')
 
+  j=model_1.predict(input)
+  low_2=int(i-(0.0166*i))
+  low_2 = format_currency(low_2, 'INR', locale='en_IN')
+  high_2=int(i+(0.0166*i))
+  high_2 = format_currency(high_2, 'INR', locale='en_IN')
 
-    input = pd.DataFrame([[INT_SQFT,BUILDTYPE,MZZONE,AREA,N_BEDROOM,PARK_FACIL]],columns=['INT_SQFT','BUILDTYPE','MZZONE','AREA','N_BEDROOM','PARK_FACIL'],index=['index'])
-                        
-                        
-    #st.dataframe(input)
-
-    valu = model.predict(input)
-    low=int(valu-(valu*0.02))
-    low = format_currency(low, 'INR', locale='en_IN')
-
-
-    high=int(valu+(valu*0.02))
-    high = format_currency(high, 'INR', locale='en_IN')
-
-    #print('Estimated value is:',low , 'to', high)
-
-
-    if st.button("Find Price",help="Click here to predict the price"):
-        st.markdown("<h1 style='text-align: center; color: grey;'>Estimated House Price</h1>", unsafe_allow_html=True)
-        st.write("*******************************",  low , 'to', high   ,"*******************************")
+  if st.button("Find Sales Price",help="Click for Sales price"):
+        st.markdown("<h1 style='text-align: center; color: grey;'>Estimated House Sales Price</h1>", unsafe_allow_html=True)
+        st.write("****************",  low_1 , 'to', high_1   ,"***************")
         st.balloons()
 
-    components.html(rating_string)
+  if st.button("Find Overall Price",help="Click for Overall price"):
+        st.markdown("<h1 style='text-align: center; color: grey;'>Estimated House Overall Price</h1>", unsafe_allow_html=True)
+        st.write("****************",  low_2 , 'to', high_2   ,"***************")
+        st.balloons()
 
+  
+
+
+  st.button("Like",help="Click to Like the Prediction")
+  st.write("Thanks for Liking the project")
 
 if __name__=='__main__':
     main()
 
 
-
     
 
 
-#By Immanuel
+
 
