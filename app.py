@@ -73,33 +73,45 @@ def main():
   BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data.BUILDTYPE.unique())
 
   if BUILDTYPE == 'House':
+      filtered=Data[Data["BUILDTYPE"]=="House"]
       BUILDTYPE = 2
   elif BUILDTYPE == 'Others':
+      filtered=Data[Data["AREA"]=="Others"]
       BUILDTYPE = 1
   elif BUILDTYPE == 'Commerical':
+      filtered=Data[Data["AREA"]=="Commercial"]
       BUILDTYPE = 0
 
   STREET = st.radio("Which Street do you need  ?",Data.STREET.unique())
 
   if STREET == 'Paved':
+      filtered=Data[Data["STREET"]=="Paved"]
       STREET = 0
   elif STREET == 'Gravel':
+      filtered=Data[Data["STREET"]=="Gravel"]
       STREET = 1
   elif STREET == 'Others':
+      filtered=Data[Data["STREET"]=="Others"]
       STREET = 2
 
   MZZONE = st.selectbox("Which Zone do you prefer ?",Data.MZZONE.unique())
   if MZZONE == 'A':
+      filtered=Data[Data["MZZONE"]=="A"]
       MZZONE = 0
   elif MZZONE == 'RH':
+      filtered=Data[Data["MZZONE"]=="RH"]
       MZZONE = 1
   elif MZZONE == 'RL':
+      filtered=Data[Data["MZZONE"]=="RL"]
       MZZONE = 2
   elif MZZONE == 'I':
+      filtered=Data[Data["MZZONE"]=="I"]
       MZZONE = 3
   elif MZZONE == 'C':
+      filtered=Data[Data["MZZONE"]=="C"]
       MZZONE = 4
   elif MZZONE == 'RM':
+      filtered=Data[Data["MZZONE"]=="RM"]
       MZZONE = 5
 
   AGE_OF_HOUSE = st.slider("What should be the age of your house ?" ,int(Data.AGE_OF_HOUSE.min()),int(Data.AGE_OF_HOUSE.max()))
