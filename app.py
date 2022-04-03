@@ -102,7 +102,7 @@ def main():
   elif MZZONE == 'RM':
       MZZONE = 5
 
-  AGE_OF_HOUSE = st.slider("What should be the age of your house ,int(Data_1.AGE_OF_HOUSE.min()),int(Data_1.AGE_OF_HOUSE.max()))
+  AGE_OF_HOUSE = st.slider("What should be the age of your house ?" ,int(Data_1.AGE_OF_HOUSE.min()),int(Data_1.AGE_OF_HOUSE.max()))
 
 
   input = pd.DataFrame([[AREA,INT_SQFT,N_BEDROOM,N_BATHROOM,N_ROOM,PARK_FACIL,BUILDTYPE,STREET,MZZONE,AGE_OF_HOUSE]],columns=['AREA','INT_SQFT','N_BEDROOM','N_BATHROOM','N_ROOM','PARK_FACIL','BUILDTYPE','STREET','MZZONE','AGE_OF_HOUSE'],index=['index'])
