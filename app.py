@@ -24,6 +24,7 @@ def main():
   components.html(html_string)
 
   # Data
+  Data = pd.read_csv("train-chennai-sale.csv")
   Data_1 = pd.read_csv("Final_Data.csv")
   Data_2 = pd.read_csv("Final_Data_2.csv")
   model_1=pickle.load(open("model_pkl_1","rb"))
@@ -32,7 +33,7 @@ def main():
   st.markdown("<ht styl='text-align:center; color: Black;'>Chennai House SalesPrice and Overall Price</hr>",unsafe_allow_html=True)
 
   #Finding House sales price and overall price
-  AREA=st.selectbox("Select your city",Data_1.AREA.unique())
+  AREA=st.selectbox("Select your city",Data.AREA.unique())
   if AREA == "Karapakkam":
     filtered=Data_1[Data_1["AREA"]=="Karapakkam"]
     AREA = 4
@@ -63,13 +64,13 @@ def main():
 
   N_ROOM = st.slider("How many Rooms you want",int(Data_1.N_ROOM.min()),int(Data_1.N_ROOM.max()))
 
-  PARK_FACIL = st.radio("Do you want parking Facilty ?",Data_1.PARK_FACIL.unique())
+  PARK_FACIL = st.radio("Do you want parking Facilty ?",Data.PARK_FACIL.unique())
   if PARK_FACIL == 'Yes':
       PARK_FACIL = 1
   else:
       PARK_FACIL = 0
 
-  BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data_1.BUILDTYPE.unique())
+  BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data.BUILDTYPE.unique())
 
   if BUILDTYPE == 'House':
       BUILDTYPE = 2
@@ -78,7 +79,7 @@ def main():
   elif BUILDTYPE == 'Commerical':
       BUILDTYPE = 0
 
-  STREET = st.radio("Which Street do you need  ?",Data_1.STREET.unique())
+  STREET = st.radio("Which Street do you need  ?",Data.STREET.unique())
 
   if STREET == 'Paved':
       STREET = 0
@@ -87,7 +88,7 @@ def main():
   elif STREET == 'Others':
       STREET = 2
 
-  MZZONE = st.selectbox("Which Zone do you prefer ?",Data_1.MZZONE.unique())
+  MZZONE = st.selectbox("Which Zone do you prefer ?",Data.MZZONE.unique())
   if MZZONE == 'A':
       MZZONE = 0
   elif MZZONE == 'RH':
