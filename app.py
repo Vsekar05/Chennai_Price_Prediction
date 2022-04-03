@@ -7,7 +7,9 @@ import streamlit.components.v1 as components
 from babel.numbers import format_currency
 import gunicorn
 from sklearn.model_selection import train_test_split
-
+from zipfile import ZipFile
+zip = ZipFile('model.zip')
+zip.extractall()
 
 def main():
   st.set_page_config(page_title="House-Price-Predictor",page_icon="house.jpg",layout="centered",initial_sidebar_state="auto",menu_items=None)
