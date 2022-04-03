@@ -132,7 +132,7 @@ def main():
   
 
 
-  if st.button("Like",help="Click to Like the Prediction")
+  if st.button("Like",help="Click to Like the Prediction"):
       st.write("Thanks for Liking the project")
 
 if __name__=='__main__':
