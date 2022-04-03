@@ -35,25 +35,25 @@ def main():
   #Finding House sales price and overall price
   AREA=st.selectbox("Select your city",Data.AREA.unique())
   if AREA == "Karapakkam":
-    filtered=Data_1[Data_1["AREA"]=="Karapakkam"]
+    filtered=Data[Data["AREA"]=="Karapakkam"]
     AREA = 4
   elif AREA == "Anna Nagar":
-    filtered=Data_1[Data_1["AREA"]=="Anna Nagar"]
+    filtered=Data[Data["AREA"]=="Anna Nagar"]
     AREA = 1
   elif AREA == "Adyar":
-    filtered=Data_1[Data_1["AREA"]=="Adyar"]
+    filtered=Data[Data["AREA"]=="Adyar"]
     AREA = 0
   elif AREA == "Velachery":
-    filtered=Data_1[Data_1["AREA"]=="Velachery"]
+    filtered=Data[Data["AREA"]=="Velachery"]
     AREA = 6
   elif AREA == "Chrompet":
-    filtered=Data_1[Data_1["AREA"]=="Chrompet"]
+    filtered=Data[Data["AREA"]=="Chrompet"]
     AREA = 2
   elif AREA == "KK Nagar":
-    filtered=Data_1[Data_1["AREA"]=="KK Nagar"]
+    filtered=Data[Data["AREA"]=="KK Nagar"]
     AREA = 3
   elif AREA == "T Nagar":
-    filtered=Data_1[Data_1["AREA"]=="T Nagar"]
+    filtered=Data[Data["AREA"]=="T Nagar"]
     AREA = 5
 
   INT_SQFT = st.slider("How many Square Feet do you want",int(Data.INT_SQFT.min()),int(Data.INT_SQFT.max()))
@@ -70,7 +70,7 @@ def main():
   else:
       PARK_FACIL = 0
 
-  BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data.BUILDTYPE.unique())
+  BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data_1.BUILDTYPE.unique())
 
   if BUILDTYPE == 'House':
       BUILDTYPE = 2
@@ -79,7 +79,7 @@ def main():
   elif BUILDTYPE == 'Commerical':
       BUILDTYPE = 0
 
-  STREET = st.radio("Which Street do you need  ?",Data.STREET.unique())
+  STREET = st.radio("Which Street do you need  ?",Data_1.STREET.unique())
 
   if STREET == 'Paved':
       STREET = 0
@@ -88,7 +88,7 @@ def main():
   elif STREET == 'Others':
       STREET = 2
 
-  MZZONE = st.selectbox("Which Zone do you prefer ?",Data.MZZONE.unique())
+  MZZONE = st.selectbox("Which Zone do you prefer ?",Data_1.MZZONE.unique())
   if MZZONE == 'A':
       MZZONE = 0
   elif MZZONE == 'RH':
