@@ -13,7 +13,9 @@ zip.extractall()
 
 def main():
   st.set_page_config(page_title="House-Price-Predictor",page_icon="house.jpg",layout="centered",initial_sidebar_state="auto",menu_items=None)
-
+  st.image("house.jpg")
+  st.title("House Sales Price and Overall Price Predictor")
+  
   html_string='''
   <script language="javascript">
   alert("Thank You for visiting my project-Vignesh S")
@@ -118,19 +120,20 @@ def main():
 
   if st.button("Find Sales Price",help="Click for Sales price"):
         st.markdown("<h1 style='text-align: center; color: grey;'>Estimated House Sales Price</h1>", unsafe_allow_html=True)
-        st.write("****************",  low_1 , 'to', high_1   ,"***************")
+        st.write(low_1 , 'to', high_1)
         st.balloons()
 
   if st.button("Find Overall Price",help="Click for Overall price"):
         st.markdown("<h1 style='text-align: center; color: grey;'>Estimated House Overall Price</h1>", unsafe_allow_html=True)
-        st.write("****************",  low_2 , 'to', high_2   ,"***************")
+        st.write("Overall price is the combination of Sales Price, Registration Fee and Commision")
+        st.write(low_2 , 'to', high_2)
         st.balloons()
 
   
 
 
-  st.button("Like",help="Click to Like the Prediction")
-  st.write("Thanks for Liking the project")
+  if st.button("Like",help="Click to Like the Prediction")
+      st.write("Thanks for Liking the project")
 
 if __name__=='__main__':
     main()
