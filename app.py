@@ -24,7 +24,7 @@ def main():
   components.html(html_string)
 
   # Data
-  Data = pd.read_csv("train-chennai-sale.csv")
+  Data = pd.read_csv("Data.csv")
   Data_1 = pd.read_csv("Final_Data.csv")
   Data_2 = pd.read_csv("Final_Data_2.csv")
   model_1=pickle.load(open("model_pkl_1","rb"))
