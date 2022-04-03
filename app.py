@@ -70,7 +70,7 @@ def main():
   else:
       PARK_FACIL = 0
 
-  BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data_1.BUILDTYPE.unique())
+  BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data.BUILDTYPE.unique())
 
   if BUILDTYPE == 'House':
       BUILDTYPE = 2
@@ -79,7 +79,7 @@ def main():
   elif BUILDTYPE == 'Commerical':
       BUILDTYPE = 0
 
-  STREET = st.radio("Which Street do you need  ?",Data_1.STREET.unique())
+  STREET = st.radio("Which Street do you need  ?",Data.STREET.unique())
 
   if STREET == 'Paved':
       STREET = 0
@@ -88,7 +88,7 @@ def main():
   elif STREET == 'Others':
       STREET = 2
 
-  MZZONE = st.selectbox("Which Zone do you prefer ?",Data_1.MZZONE.unique())
+  MZZONE = st.selectbox("Which Zone do you prefer ?",Data.MZZONE.unique())
   if MZZONE == 'A':
       MZZONE = 0
   elif MZZONE == 'RH':
