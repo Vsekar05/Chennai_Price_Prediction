@@ -55,7 +55,7 @@ def main():
     filtered=Data_1[Data_1["AREA"]=="T Nagar"]
     AREA = 5
 
-  INT_SQFT = st.slider("Ho many SQFT you want",int(Data_1.INT_SQFT.min()),int(Data_1.INT_SQFT.max()))
+  INT_SQFT = st.slider("How many Square Feet do you want",int(Data_1.INT_SQFT.min()),int(Data_1.INT_SQFT.max()))
 
   N_BEDROOM = st.slider("How many Bedrooms you want",int(Data_1.N_BEDROOM.min()),int(Data_1.N_BEDROOM.max()))
 
@@ -69,7 +69,7 @@ def main():
   else:
       PARK_FACIL = 0
 
-  BUILDTYPE = st.radio("What kind of purpose you need  ?",Data_1.BUILDTYPE.unique())
+  BUILDTYPE = st.radio("What Should be the Buildtype of your house  ?",Data_1.BUILDTYPE.unique())
 
   if BUILDTYPE == 'House':
       BUILDTYPE = 2
@@ -78,7 +78,7 @@ def main():
   elif BUILDTYPE == 'Commerical':
       BUILDTYPE = 0
 
-  STREET = st.radio("What kind of purpose you need  ?",Data_1.STREET.unique())
+  STREET = st.radio("Which Street do you need  ?",Data_1.STREET.unique())
 
   if STREET == 'Paved':
       STREET = 0
@@ -87,7 +87,7 @@ def main():
   elif STREET == 'Others':
       STREET = 2
 
-  MZZONE = st.selectbox("Which Zone you prefer ?",Data_1.MZZONE.unique())
+  MZZONE = st.selectbox("Which Zone do you prefer ?",Data_1.MZZONE.unique())
   if MZZONE == 'A':
       MZZONE = 0
   elif MZZONE == 'RH':
@@ -101,7 +101,7 @@ def main():
   elif MZZONE == 'RM':
       MZZONE = 5
 
-  AGE_OF_HOUSE = st.slider("How many Rooms you want",int(Data_1.AGE_OF_HOUSE.min()),int(Data_1.AGE_OF_HOUSE.max()))
+  AGE_OF_HOUSE = st.slider("What should be the age of your house ,int(Data_1.AGE_OF_HOUSE.min()),int(Data_1.AGE_OF_HOUSE.max()))
 
 
   input = pd.DataFrame([[AREA,INT_SQFT,N_BEDROOM,N_BATHROOM,N_ROOM,PARK_FACIL,BUILDTYPE,STREET,MZZONE,AGE_OF_HOUSE]],columns=['AREA','INT_SQFT','N_BEDROOM','N_BATHROOM','N_ROOM','PARK_FACIL','BUILDTYPE','STREET','MZZONE','AGE_OF_HOUSE'],index=['index'])
