@@ -1,19 +1,18 @@
 
-# Chennai House Pricing
+# Chennai House Sales Price and Overall Price Prediction
 
 This project was done by real dataset.
 
 ## 🛠 APP
---->> click [House-Pricing-App](http://chennai-houseprice.herokuapp.com/)   <<--- Click
+--->> click [House-Pricing-App](https://vsekar05.herokuapp.com/)   <<--- Click
 
 
 ## Author Bio
 
 | Profile | Link |
 | ------ | ------ |
-| Linkedin | [https://www.linkedin.com/in/immangeek/]|
-| Kaggle | [https://www.kaggle.com/immanvel]|
-| Instagram | [https://www.instagram.com/iam_immanuel_/] |
+| Linkedin | [https://www.linkedin.com/in/vignesh-s-390353168/]|
+| Instagram | [https://www.instagram.com/vignesh_rockzz_98/] |
 
 
 ## Roadmap
@@ -33,42 +32,9 @@ This project was done by real dataset.
 - After completed app pushed in github and make live in heroku
 
 
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/immangeek/Chennai-Housing-Price.git
-```
-
-Go to the project directory
-
-```bash
-  cd chennai-housing-price
-```
-
-Install dependencies
-
-```bash
-  pip install streamlit
-```
-
-Start the server
-
-```bash
-  streamlit run app.py
-```
 
 
-## Support
-
-For support, email immangeek@gmail.com or give hand in git.
 
 
-## Related
-
-Here are some related projects
-
-[Chennai IPL Dashboard](https://github.com/immangeek/IPL-Data-app)
 
 
