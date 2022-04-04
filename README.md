@@ -35,7 +35,7 @@ This project was done by real dataset.
 
 ![houseprice](https://user-images.githubusercontent.com/95733152/161468384-ae2abe6d-05ec-4ce6-a40f-5424a3abc175.PNG)
 
-
+![houseprce 2](https://user-images.githubusercontent.com/95733152/161468651-cc184a66-5efc-4c10-bb60-ae7d417afced.PNG)
 
 
 
