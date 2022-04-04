@@ -30,7 +30,7 @@ This project was done by real dataset.
 
 - Prepared the app for deployment with the help of streamlit
 
-- After completed app pushed in github and make live in heroku
+- After completed app pushed in github and madee live in heroku
 
 ## Images from the app
 
