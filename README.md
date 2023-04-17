@@ -4,7 +4,7 @@
 This project was done by real dataset.
 
 ## 🛠 APP
---->> click [House-Pricing-App](https://vsekar05.herokuapp.com/)   <<--- Click
+--->> click [House-Pricing-App](https://vsekar05-chennai-price-prediction-app-c9evq8.streamlit.app/)   <<--- Click
 
 
 ## Author Bio
